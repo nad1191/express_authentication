@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const db = require('../models');
+const db = require('../models/user');
 
-before(function(done) {
+beforeAll(function(done) {
   db.sequelize.sync({ force: true }).then(function() {
     done();
   });

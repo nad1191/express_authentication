@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args:[1,99],
-          msg:'Email must be between 1 and 99 characters'
+          msg:'Invalid Email.'
         }
       }
     },
