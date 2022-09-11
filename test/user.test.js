@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const db = require('../models/user');
+const db = require('../models');
 
-beforeAll(function(done) {
+before(function(done) {
   db.sequelize.sync({ force: true }).then(function() {
     done();
   });
@@ -77,7 +77,7 @@ describe('User instance methods', function() {
   describe('validPassword', function() {
     it('should validate a correct password', function(done) {
       db.user.findOne().then(function(user) {
-        if (user.validPassword('123123123')) {
+        if (user.validatePassword('123123123')) {
           done();
         } else {
           done(user);
@@ -89,7 +89,7 @@ describe('User instance methods', function() {
 
     it('should invalidate an incorrect password', function(done) {
       db.user.findOne().then(function(user) {
-        if (!user.validPassword('nope')) {
+        if (!user.validatePassword('nope')) {
           done();
         } else {
           done(user);
